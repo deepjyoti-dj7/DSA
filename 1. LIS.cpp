@@ -30,6 +30,33 @@ int LIS_Memoization(vector<int> &arr, int ind, int prev, vector<vector<int>> &dp
     return dp[ind][prev + 1] = max(take, notTake);
 }
 
+int LIS_Tabulation(vector<int> &arr, int n) {
+    vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+    for (int ind = n - 1; ind >= 0; ind--) {
+        for (int prev = ind - 1; prev >= -1; prev--) {
+            int take = 0;
+            if (prev == -1 || arr[prev] < arr[ind])     
+                take = 1 + dp[ind + 1][ind];
+            dp[ind][prev + 1] = max(take, dp[ind + 1][prev + 1]);
+        }
+    }
+    return dp[0][0];
+}
+
+int LIS_Tabulation_SpaceOptimized(vector<int> &arr, int n) {
+    vector<int> cur(n + 1, 0), next(n + 1, 0);
+    for (int ind = n - 1; ind >= 0; ind--) {
+        for (int prev = ind - 1; prev >= -1; prev--) {
+            int take = 0;
+            if (prev == -1 || arr[prev] < arr[ind])     
+                take = 1 + next[ind];
+            cur[prev + 1] = max(take, next[prev + 1]);
+        }
+        next = cur;
+    }
+    return next[0];
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 0, 1};
     int n = arr.size();
@@ -38,6 +65,10 @@ int main() {
     
     vector<vector<int>> dp(n, vector<int>(n + 1, -1));
     cout << "Length of LIS using Memoization: " << LIS_Memoization(arr, 0, -1, dp) << endl;
+
+    cout << "Length of LIS using Tabulation: " << LIS_Tabulation(arr, n) << endl;
+
+    cout << "Length of LIS using Tabulation and Space Optimization: " << LIS_Tabulation_SpaceOptimized(arr, n) << endl;
 
     return 0;
 }
