@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -71,11 +70,42 @@ int LIS_Tabulation_SpaceOptimized2(vector<int>& arr, int n) {
     return maxi;
 }
 
+int LIS_Print(vector<int>& arr, int n) {
+    vector<int> dp(n, 1), hash(n);
+    int maxi = 1, lastIndex = 0;
+    for (int i = 0; i < n; i++) {
+        hash[i] = i;
+        for (int prev = 0; prev < i; prev++) {
+            if (arr[prev] < arr[i] && 1 + dp[prev] > dp[i]) {
+                dp[i] = 1 + dp[prev];
+                hash[i] = prev;
+            }
+        }
+        if (dp[i] > maxi) {
+            maxi = dp[i];
+            lastIndex = i;
+        }
+    }
+    vector<int> temp;
+    temp.push_back(arr[lastIndex]);
+    while (hash[lastIndex] != lastIndex) {
+        lastIndex = hash[lastIndex];
+        temp.push_back(arr[lastIndex]);
+    }
+    reverse(temp.begin(), temp.end());
+
+    for (auto it : temp) 
+        cout << it << " ";
+    cout << endl << "Length of LIS is: ";
+
+    return maxi;
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 0, 1};
     int n = arr.size();
 
-    cout << "Length of LIS: " << LIS(arr, 0, -1) << endl;
+    cout << "Length of LIS using Recursion: " << LIS(arr, 0, -1) << endl;
     
     vector<vector<int>> dp(n, vector<int>(n + 1, -1));
     cout << "Length of LIS using Memoization: " << LIS_Memoization(arr, 0, -1, dp) << endl;
@@ -85,6 +115,8 @@ int main() {
     cout << "Length of LIS using Tabulation and Space Optimization 1: " << LIS_Tabulation_SpaceOptimized1(arr, n) << endl;
 
     cout << "Length of LIS using Tabulation and Space Optimization 2: " << LIS_Tabulation_SpaceOptimized2(arr, n) << endl;
+
+    cout << "LIS is " << LIS_Print(arr, n) << endl;
 
     return 0;
 }
