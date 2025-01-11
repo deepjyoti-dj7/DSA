@@ -43,7 +43,7 @@ int LIS_Tabulation(vector<int> &arr, int n) {
     return dp[0][0];
 }
 
-int LIS_Tabulation_SpaceOptimized(vector<int> &arr, int n) {
+int LIS_Tabulation_SpaceOptimized1(vector<int> &arr, int n) {
     vector<int> cur(n + 1, 0), next(n + 1, 0);
     for (int ind = n - 1; ind >= 0; ind--) {
         for (int prev = ind - 1; prev >= -1; prev--) {
@@ -57,6 +57,20 @@ int LIS_Tabulation_SpaceOptimized(vector<int> &arr, int n) {
     return next[0];
 }
 
+int LIS_Tabulation_SpaceOptimized2(vector<int>& arr, int n) {
+    vector<int> dp(n, 1);
+    int maxi = 1;
+    for (int i = 0; i < n; i++) {
+        for (int prev = 0; prev < i; prev++) {
+            if (arr[prev] < arr[i]) {
+                dp[i] = max(dp[i], 1 + dp[prev]);
+            }
+        }
+        maxi = max(maxi, dp[i]);
+    }
+    return maxi;
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 0, 1};
     int n = arr.size();
@@ -68,7 +82,9 @@ int main() {
 
     cout << "Length of LIS using Tabulation: " << LIS_Tabulation(arr, n) << endl;
 
-    cout << "Length of LIS using Tabulation and Space Optimization: " << LIS_Tabulation_SpaceOptimized(arr, n) << endl;
+    cout << "Length of LIS using Tabulation and Space Optimization 1: " << LIS_Tabulation_SpaceOptimized1(arr, n) << endl;
+
+    cout << "Length of LIS using Tabulation and Space Optimization 2: " << LIS_Tabulation_SpaceOptimized2(arr, n) << endl;
 
     return 0;
 }
