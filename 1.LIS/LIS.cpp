@@ -101,6 +101,20 @@ int LIS_Print(vector<int>& arr, int n) {
     return maxi;
 }
 
+int LIS_binary_search(vector<int>& arr, int n) {
+    vector<int> res;
+    res.push_back(arr[0]);
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > res.back())
+            res.push_back(arr[i]);
+        else {
+            int ind = lower_bound(arr.begin(), arr.end(), arr[i]) - arr.begin();
+            res[ind] = arr[ind];
+        }
+    }
+    return res.size();
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 0, 1};
     int n = arr.size();
@@ -117,6 +131,8 @@ int main() {
     cout << "Length of LIS using Tabulation and Space Optimization 2: " << LIS_Tabulation_SpaceOptimized2(arr, n) << endl;
 
     cout << "LIS is " << LIS_Print(arr, n) << endl;
+
+    cout << "Legnth of LIS using binary search is " << LIS_binary_search(arr, n) << endl;
 
     return 0;
 }
