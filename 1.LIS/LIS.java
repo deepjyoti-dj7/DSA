@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class LIS {
 
@@ -48,7 +51,7 @@ public class LIS {
     }
 
     // Tabulation with Space Optimization
-    public static int LIS_Tabulation_SpaceOptimized(int[] arr, int n) {
+    public static int LIS_Tabulation_SpaceOptimized1(int[] arr, int n) {
         int[] cur = new int[n + 1];
         int[] next = new int[n + 1];
 
@@ -64,6 +67,92 @@ public class LIS {
             next = cur.clone();
         }
         return next[0];
+    }
+
+    public static int LIS_Tabulation_SpaceOptimized2(int[] arr, int n) {
+        int maxi = 1;
+
+        int[] dp = new int[n];
+        for (int i : dp) dp[i] = 1;
+        
+        for (int i = 0; i < n; i++) {
+            for (int prev = 0; prev < i; prev++) {
+                if (arr[prev] < arr[i]) {
+                    dp[i] = Math.max(dp[i], 1 + dp[prev]);
+                }
+            }
+            maxi = Math.max(maxi, dp[i]);
+        }
+        return maxi;
+    }
+
+    public static int LIS_Print(int[] arr, int n) {
+        int maxi = 1;
+        int lastIndex = 0;
+        
+        int[] dp = new int[n];
+        for (int i : dp) dp[i] = 1;
+
+        int[] hash = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            hash[i] = i;
+            for (int prev = 0; prev < i; prev++) {
+                if (arr[prev] < arr[i] && 1 + dp[prev] > dp[i]) {
+                    dp[i] = 1 + dp[prev];
+                    hash[i] = prev;
+                }
+            }
+            if (dp[i] > maxi) {
+                maxi = dp[i];
+                lastIndex = i;
+            }
+        }
+
+        List<Integer> temp = new ArrayList<>();
+        temp.add(arr[lastIndex]);
+
+        while (hash[lastIndex] != lastIndex) {
+            lastIndex = hash[lastIndex];
+            temp.add(arr[lastIndex]);
+        }
+        Collections.reverse(temp);
+
+        System.out.print("LIS elements: ");
+        for (int it : temp) {
+            System.out.print(it + " ");
+        }
+
+        System.out.print("\nLength of LIS is: ");
+
+        return maxi;
+    }
+
+    public static int LIS_binary_search(int[] arr, int n) {
+        List<Integer> res = new ArrayList<>();
+        res.add(arr[0]); 
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > res.get(res.size() - 1)) 
+                res.add(arr[i]);
+            else {
+                int ind = lowerBound(res, arr[i]);
+                res.set(ind, arr[i]);
+            }
+        }
+        return res.size();
+    }
+
+    public static int lowerBound(List<Integer> list, int key) {
+        int left = 0, right = list.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (list.get(mid) < key) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left;
     }
 
     public static void main(String[] args) {
@@ -82,7 +171,14 @@ public class LIS {
         // Tabulation solution
         System.out.println("Length of LIS (Tabulation): " + LIS_Tabulation(arr, n));
 
-        // Tabulation with Space Optimization solution
-        System.out.println("Length of LIS (Space Optimized): " + LIS_Tabulation_SpaceOptimized(arr, n));
+        // Tabulation with Space Optimization 1 solution
+        System.out.println("Length of LIS (Space Optimized 1): " + LIS_Tabulation_SpaceOptimized1(arr, n));
+
+        // Tabulation with Space Optimization 1 solution
+        System.out.println("Length of LIS (Space Optimized 2): " + LIS_Tabulation_SpaceOptimized2(arr, n));
+
+        System.out.println(LIS_Print(arr, n));
+
+        System.out.println("Length of LIS using binary search: " + LIS_binary_search(arr, n));
     }
 }
