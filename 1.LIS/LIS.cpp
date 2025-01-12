@@ -102,7 +102,7 @@ int LIS_Print(vector<int>& arr, int n) {
     return maxi;
 }
 
-int LIS_binary_search(vector<int>& arr, int n) {
+int LIS_Binary_Search(vector<int>& arr, int n) {
     vector<int> res;
     res.push_back(arr[0]);
     for (int i = 0; i < n; i++) {
@@ -133,7 +133,7 @@ int main() {
 
     cout << "LIS is " << LIS_Print(arr, n) << endl;
 
-    cout << "Legnth of LIS using binary search is " << LIS_binary_search(arr, n) << endl;
+    cout << "Legnth of LIS using binary search is " << LIS_Binary_Search(arr, n) << endl;
 
     return 0;
 }
