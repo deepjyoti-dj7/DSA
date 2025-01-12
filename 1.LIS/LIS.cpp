@@ -85,8 +85,10 @@ int LIS_Print(vector<int>& arr, int n) {
             lastIndex = i;
         }
     }
+    
     vector<int> temp;
     temp.push_back(arr[lastIndex]);
+    
     while (hash[lastIndex] != lastIndex) {
         lastIndex = hash[lastIndex];
         temp.push_back(arr[lastIndex]);
