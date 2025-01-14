@@ -126,10 +126,10 @@ int main() {
     string s1 = "geeksforgeeks";
     string s2 = "practicewritegeekscourses";
     
-    cout << LCS_Iterative(s1, s2) << endl;
-    cout << LCS_Recursion(s1, s2) << endl;
-    cout << LCS_Tabulation(s1, s2) << endl;
-    cout << LCS_Tabulation(s1, s2) << endl;
+    cout << "Longest Common Substring Iterative: " << LCS_Iterative(s1, s2) << endl;
+    cout << "Longest Common Substring Recursion: " << LCS_Recursion(s1, s2) << endl;
+    cout << "Longest Common Substring Tabulation: " << LCS_Tabulation(s1, s2) << endl;
+    cout << "Longest Common Substring Tabulation_SpaceOptimized: " << LCS_Tabulation_SpaceOptimized(s1, s2) << endl;
 
     LCS_Tabulation_Print(s1, s2);
     LCS_Tabulation_SpaceOptimized_Print(s1, s2);
