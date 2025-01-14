@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LongestCommonSubstring {
+public class LCS {
 
     public static int LCS_Iterative(String s1, String s2) {
         int res = 0;
