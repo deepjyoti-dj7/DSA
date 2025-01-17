@@ -15,7 +15,7 @@ void BFS(int node, vector<vector<int>> &adj, vector<bool> &vis) {
         for (auto& neigh : adj[cur]) {
             if (!vis[neigh]) {
                 q.push(neigh);
-                vis[neigh] = 1;
+                vis[neigh] = true;
             }
         }
     }
@@ -32,7 +32,7 @@ int main() {
     adj[4] = {1, 2, 5};
     adj[5] = {4};
 
-    vector<bool> vis(n, 0);
+    vector<bool> vis(n, false);
      
     cout << "BFS starting from node 0: ";
     BFS(0, adj, vis);
