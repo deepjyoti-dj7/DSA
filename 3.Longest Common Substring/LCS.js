@@ -115,7 +115,8 @@ function LCS_Tabulation_SpaceOptimized_Print(s1, s2) {
     }
 
     let lcs = "";
-    if (maxLen > 0) lcs = s1.substring(endIndex - maxLen + 1, endIndex + 1);
+    if (maxLen > 0) 
+        lcs = s1.substring(endIndex - maxLen + 1, endIndex + 1);
 
     console.log("Longest Common Substring: " + lcs + " || and length is: " + maxLen);
 
