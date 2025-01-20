@@ -37,14 +37,17 @@ def topological_sort_bfs(n, adj):
 
     return topo
 
-# Main
-n = 6
-adj = [[] for _ in range(n)]
+def main():
+    n = 6
+    adj = [[] for _ in range(n)]
 
-adj[5].extend([2, 0])
-adj[4].extend([0, 1])
-adj[2].append(3)
-adj[3].append(1)
+    adj[5].extend([2, 0])
+    adj[4].extend([0, 1])
+    adj[2].append(3)
+    adj[3].append(1)
 
-print("Topological Sort (DFS):", topological_sort_dfs(n, adj))
-print("Topological Sort (BFS):", topological_sort_bfs(n, adj))
+    print("Topological Sort (DFS):", topological_sort_dfs(n, adj))
+    print("Topological Sort (BFS):", topological_sort_bfs(n, adj))
+
+if __name__ == "__main__":
+    main()
