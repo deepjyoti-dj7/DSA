@@ -3,6 +3,7 @@ import java.util.*;
 public class Dijkstra {
     public static List<Integer> dijkstraPriorityQueue(int n, int src, List<List<int[]>> adj) {
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        
         int[] dist = new int[n];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
@@ -22,7 +23,8 @@ public class Dijkstra {
         }
 
         List<Integer> result = new ArrayList<>();
-        for (int d : dist) result.add(d);
+        for (int d : dist) 
+            result.add(d);
         return result;
     }
 
@@ -41,6 +43,7 @@ public class Dijkstra {
                 int neigh = neighbor[0], edgeWt = neighbor[1];
                 if (dis + edgeWt < dist[neigh]) {
                     set.remove(new int[]{dist[neigh], neigh});
+
                     dist[neigh] = dis + edgeWt;
                     set.add(new int[]{dist[neigh], neigh});
                 }
@@ -48,7 +51,8 @@ public class Dijkstra {
         }
 
         List<Integer> result = new ArrayList<>();
-        for (int d : dist) result.add(d);
+        for (int d : dist) 
+            result.add(d);
         return result;
     }
 
@@ -56,7 +60,8 @@ public class Dijkstra {
         int n = 5; // Number of nodes
         int src = 0; // Source node
         List<List<int[]>> adj = new ArrayList<>();
-        for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+        for (int i = 0; i < n; i++) 
+            adj.add(new ArrayList<>());
 
         // Graph representation
         adj.get(0).add(new int[]{1, 2});

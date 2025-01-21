@@ -1,9 +1,10 @@
 import heapq
 
-def dijkstra_priority_queue(n, src, adj):
+def dijkstraPriorityQueue(n, src, adj):
+    pq = [(0, src)]  # Min-heap storing (distance, node)
+    
     dist = [float('inf')] * n
     dist[src] = 0
-    pq = [(0, src)]  # Min-heap storing (distance, node)
 
     while pq:
         dis, node = heapq.heappop(pq)
@@ -15,11 +16,12 @@ def dijkstra_priority_queue(n, src, adj):
     
     return dist
 
-def dijkstra_set(n, src, adj):
+def dijkstraSet(n, src, adj):
+    active_nodes = {(0, src)}  # Using a set to store (distance, node)
+
     dist = [float('inf')] * n
     dist[src] = 0
     visited = set()
-    active_nodes = {(0, src)}  # Using a set to store (distance, node)
 
     while active_nodes:
         dis, node = min(active_nodes)  # Extract node with minimum distance
@@ -33,6 +35,7 @@ def dijkstra_set(n, src, adj):
             if dis + edge_wt < dist[neigh]:
                 if dist[neigh] != float('inf'):
                     active_nodes.discard((dist[neigh], neigh))
+
                 dist[neigh] = dis + edge_wt
                 active_nodes.add((dist[neigh], neigh))
     
@@ -50,10 +53,10 @@ def main():
     adj[4].extend([(2, 2), (3, 4)])
 
     # Priority Queue
-    print("Distances (Priority Queue):", dijkstra_priority_queue(n, src, adj))
+    print("Distances (Priority Queue):", dijkstraPriorityQueue(n, src, adj))
 
     # Set
-    print("Distances (Set):", dijkstra_set(n, src, adj))
+    print("Distances (Set):", dijkstraSet(n, src, adj))
 
 if __name__ == "__main__":
     main()

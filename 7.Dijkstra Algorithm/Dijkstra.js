@@ -9,7 +9,8 @@ class PriorityQueue {
     }
 
     dequeue() {
-        if (this.isEmpty()) return "Queue is empty";
+        if (this.isEmpty()) 
+            return "Queue is empty";
         return this.queue.shift();
     }
 
@@ -19,9 +20,9 @@ class PriorityQueue {
 }
 
 function dijkstraPriorityQueue(n, src, adj) {
-    const dist = Array(n).fill(Infinity);
     const pq = new PriorityQueue();
-
+    
+    const dist = Array(n).fill(Infinity);
     dist[src] = 0;
     pq.enqueue([0, src]);
 
@@ -39,10 +40,10 @@ function dijkstraPriorityQueue(n, src, adj) {
 }
 
 function dijkstraSet(n, src, adj) {
-    const dist = Array(n).fill(Infinity);
     const set = new Set();
     const sortedSet = new Map();
-
+    
+    const dist = Array(n).fill(Infinity);
     dist[src] = 0;
     sortedSet.set(src, 0);
 
