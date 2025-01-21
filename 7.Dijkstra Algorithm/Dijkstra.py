@@ -38,19 +38,22 @@ def dijkstra_set(n, src, adj):
     
     return dist
 
-# Main
-n = 5  # Number of nodes
-src = 0  # Source node
-adj = [[] for _ in range(n)]
+def main():
+    n = 5  # Number of nodes
+    src = 0  # Source node
+    adj = [[] for _ in range(n)]
 
-# Graph representation
-adj[0].extend([(1, 2), (4, 1)])
-adj[1].extend([(2, 3)])
-adj[2].extend([(3, 6)])
-adj[4].extend([(2, 2), (3, 4)])
+    # Graph representation
+    adj[0].extend([(1, 2), (4, 1)])
+    adj[1].extend([(2, 3)])
+    adj[2].extend([(3, 6)])
+    adj[4].extend([(2, 2), (3, 4)])
 
-# Priority Queue
-print("Distances (Priority Queue):", dijkstra_priority_queue(n, src, adj))
+    # Priority Queue
+    print("Distances (Priority Queue):", dijkstra_priority_queue(n, src, adj))
 
-# Set
-print("Distances (Set):", dijkstra_set(n, src, adj))
+    # Set
+    print("Distances (Set):", dijkstra_set(n, src, adj))
+
+if __name__ == "__main__":
+    main()
