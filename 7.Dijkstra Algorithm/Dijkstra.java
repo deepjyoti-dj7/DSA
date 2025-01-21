@@ -30,6 +30,7 @@ public class Dijkstra {
 
     public static List<Integer> dijkstraSet(int n, int src, List<List<int[]>> adj) {
         TreeSet<int[]> set = new TreeSet<>(Comparator.comparingInt(a -> a[0]));
+        
         int[] dist = new int[n];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
