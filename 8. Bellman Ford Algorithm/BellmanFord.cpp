@@ -10,9 +10,9 @@ vector<int> BellmanFord(int n, int src, vector<vector<int>> &edges) {
         for (auto& edge : edges) {
             int u = edge[0];
             int v = edge[1];
-            int wt = edge[2];
-            if (dist[u] != INT_MAX && dist[u] + wt < dist[v]) {
-                dist[v] = dist[u] + wt;
+            int weight = edge[2];
+            if (dist[u] != INT_MAX && dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
             }
         }
     }
