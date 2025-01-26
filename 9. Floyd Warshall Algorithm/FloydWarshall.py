@@ -21,4 +21,5 @@ def main():
     for row in dist:
         print(" ".join("INF" if d == float('inf') else str(d) for d in row))
 
-main()
+if __name__ == "__main__":
+    main()
