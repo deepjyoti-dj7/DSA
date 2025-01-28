@@ -11,16 +11,14 @@ public:
         parent.resize(n);
         rank.resize(n, 0); // Rank is initialized to 0
         size.resize(n, 1); // Size of each set is initially 1
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) 
             parent[i] = i; // Each element is its own parent initially
-        }
     }
 
     // Find the representative (root) of the set containing x, with path compression
     int find(int x) {
-        if (parent[x] != x) {
+        if (parent[x] != x) 
             parent[x] = find(parent[x]); // Path compression
-        }
         return parent[x];
     }
 
@@ -30,11 +28,11 @@ public:
         int rootY = find(y);
 
         if (rootX != rootY) {
-            if (rank[rootX] > rank[rootY]) {
+            if (rank[rootX] > rank[rootY]) 
                 parent[rootY] = rootX; // Attach smaller tree under larger tree
-            } else if (rank[rootX] < rank[rootY]) {
+            else if (rank[rootX] < rank[rootY]) 
                 parent[rootX] = rootY;
-            } else {
+            else {
                 parent[rootY] = rootX; // If ranks are equal, attach under one and increment rank
                 rank[rootX]++;
             }
