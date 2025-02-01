@@ -31,5 +31,4 @@ def main():
         print(f"Distances from source {src}:", distances)
 
 
-if __name__ == "__main__":
-    main()
+main()

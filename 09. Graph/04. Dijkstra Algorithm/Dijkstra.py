@@ -58,5 +58,4 @@ def main():
     # Set
     print("Distances (Set):", dijkstraSet(n, src, adj))
 
-if __name__ == "__main__":
-    main()
+main()

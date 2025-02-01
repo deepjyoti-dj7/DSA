@@ -92,5 +92,4 @@ def main():
     # Call Kruskal's Algorithm
     kruskalMST(n, edges)
 
-if __name__ == "__main__":
-    main()
+main()

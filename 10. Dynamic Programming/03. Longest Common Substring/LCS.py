@@ -116,5 +116,4 @@ def main():
     LCS_Tabulation_Print(s1, s2)
     LCS_Tabulation_SpaceOptimized_Print(s1, s2)
 
-if __name__ == "__main__":
-    main()
+main()

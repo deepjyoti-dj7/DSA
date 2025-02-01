@@ -29,5 +29,4 @@ def main():
     print("BFS starting from node 0: ", end="")
     BFS(0, adj, vis)
 
-if __name__ == "__main__":
-    main()
+main()

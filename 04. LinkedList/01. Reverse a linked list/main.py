@@ -55,5 +55,4 @@ def main():
     print("Reversed List (Recursive):")
     print_list(head)
 
-if __name__ == "__main__":
-    main()
+main()

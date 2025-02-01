@@ -60,5 +60,4 @@ def main():
     print("Root of 2:", ds.find(2))
     print("Root of 4:", ds.find(4))
 
-if __name__ == "__main__":
-    main()
+main()

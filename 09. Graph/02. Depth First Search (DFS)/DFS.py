@@ -22,5 +22,4 @@ def main():
     print("DFS starting from node 0: ", end="")
     DFS(0, adj, vis)
 
-if __name__ == "__main__":
-    main()
+main()

@@ -40,5 +40,4 @@ def main():
 
     prims_algorithm(n, adj)
 
-if __name__ == "__main__":
-    main()
+main()

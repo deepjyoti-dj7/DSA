@@ -49,5 +49,4 @@ def main():
     print("Topological Sort (DFS):", topological_sort_dfs(n, adj))
     print("Topological Sort (BFS):", topological_sort_bfs(n, adj))
 
-if __name__ == "__main__":
-    main()
+main()

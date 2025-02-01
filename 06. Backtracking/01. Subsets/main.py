@@ -21,5 +21,4 @@ def main():
     print("Subsets using Backtracking:")
     print(subsets(nums))
 
-if __name__ == "__main__":
-    main()
+main()

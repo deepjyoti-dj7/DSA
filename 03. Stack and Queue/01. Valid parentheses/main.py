@@ -21,5 +21,4 @@ def main():
     for test in testCases:
         print(f"String: {test} -> {'Valid' if isValid(test) else 'Invalid'}")
 
-if __name__ == "__main__":
-    main()
+main()

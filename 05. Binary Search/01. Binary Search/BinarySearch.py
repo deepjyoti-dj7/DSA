@@ -42,5 +42,4 @@ def main():
     recursive_result = binary_search_recursive(arr, 0, len(arr) - 1, target)
     print(f"Recursive: Element found at index {recursive_result}" if recursive_result != -1 else "Recursive: Element not found")
 
-if __name__ == "__main__":
-    main()
+main()

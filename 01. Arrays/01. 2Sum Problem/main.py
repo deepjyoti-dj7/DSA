@@ -40,5 +40,4 @@ def main():
     print("Hashing:", two_sum_hashing(nums, target))
     print("Sorting + Two Pointers:", two_sum_sorting(nums, target))
 
-if __name__ == "__main__":
-    main()
+main()
