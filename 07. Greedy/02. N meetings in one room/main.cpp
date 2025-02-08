@@ -1,32 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Meeting {
-    int start, end;
-};
+int maxMeetings(vector<vector<int>>& meetings) {
+    sort(meetings.begin(), meetings.end(), [](vector<int>& a, vector<int>& b) {
+        return a[1] < b[1];
+    });
 
-// Comparator function to sort meetings by end time
-bool compare(Meeting a, Meeting b) {
-    return a.end < b.end;
-}
+    int count = 1;
+    int lastEnd = meetings[0][1];
 
-int maxMeetings(vector<Meeting>& meetings) {
-    sort(meetings.begin(), meetings.end(), compare); // Sort meetings by end time
-
-    int count = 0, lastEndTime = -1;
-
-    for (const auto& meeting : meetings) {
-        if (meeting.start > lastEndTime) {
-            count++;
-            lastEndTime = meeting.end;
+    for (int i = 1; i < meetings.size(); i++) {
+        if (meetings[i][0] > lastEnd) {  
+            count++; // Select the meeting
+            lastEnd = meetings[i][1];
         }
     }
-
-    return count;
+    return count; // Return max number of meetings
 }
 
+
 int main() {
-    vector<Meeting> meetings = {{1, 3}, {2, 5}, {3, 8}, {6, 9}, {8, 10}, {5, 7}};
+    vector<vector<int>> meetings = {{1, 3}, {2, 5}, {3, 8}, {6, 9}, {8, 10}, {5, 7}};
 
     cout << "Maximum number of meetings: " << maxMeetings(meetings) << endl;
 
