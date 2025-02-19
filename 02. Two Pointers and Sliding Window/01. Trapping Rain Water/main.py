@@ -27,5 +27,4 @@ def main():
     print("Trapped water:", trap(height))
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

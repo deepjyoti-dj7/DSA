@@ -35,5 +35,4 @@ def main():
     print("Target found:", "Yes" if search(nums, target) else "No")
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

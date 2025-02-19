@@ -22,5 +22,4 @@ def main():
     print(f"Maximum consecutive ones (with at most {k} flips):", longestOnes(nums, k))
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

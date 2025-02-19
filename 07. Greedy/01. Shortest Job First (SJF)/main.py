@@ -38,5 +38,4 @@ def main():
     print("SJF Scheduling Results:")
     sjf_scheduling(processes)
 
-if __name__ == "__main__":
-    main()
+main()

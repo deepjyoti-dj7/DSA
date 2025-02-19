@@ -22,5 +22,4 @@ def main():
     print(result)
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

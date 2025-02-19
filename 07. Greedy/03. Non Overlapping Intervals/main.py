@@ -22,5 +22,4 @@ def main():
     print("Minimum intervals to remove:", erase_overlap_intervals(intervals))
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

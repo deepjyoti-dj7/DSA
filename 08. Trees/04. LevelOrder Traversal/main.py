@@ -46,5 +46,4 @@ def main():
     print("Level Order Traversal:", result)
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

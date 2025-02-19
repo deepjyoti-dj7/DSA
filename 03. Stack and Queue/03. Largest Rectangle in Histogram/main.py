@@ -18,5 +18,4 @@ def main():
     print("Largest Rectangle Area:", largestRectangleArea(heights))
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

@@ -39,5 +39,4 @@ def main():
     print("Maximal Rectangle Area:", maximalRectangle(matrix))
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

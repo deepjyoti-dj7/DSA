@@ -18,5 +18,4 @@ def main():
     print("Maximum number of meetings:", max_meetings(meetings))
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

@@ -80,7 +80,7 @@ def LCS_print(s1, s2):
     return ''.join(lcs)
 
 
-if __name__ == "__main__":
+def main():
     s1 = "abcde"
     s2 = "ace"
     
@@ -99,3 +99,5 @@ if __name__ == "__main__":
     
     # LCS Printing
     print("The LCS is:", LCS_print(s1, s2))
+
+main()

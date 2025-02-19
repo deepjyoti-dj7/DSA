@@ -108,7 +108,8 @@ def LIS_binary_search(arr, n):
     return len(res)
 
 
-if __name__ == "__main__":
+
+def main():
     arr = [1, 2, 3, 5, 6, 0, 1]
     n = len(arr)
 
@@ -126,3 +127,5 @@ if __name__ == "__main__":
     LIS_print(arr, n)
 
     print("Length of LIS using Binary Search:", LIS_binary_search(arr, n))
+
+main()
