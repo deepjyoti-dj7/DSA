@@ -11,7 +11,7 @@ struct TreeNode {
 };
 
 // Level Order Traversal using BFS (Queue)
-vector<vector<int>> levelOrder(TreeNode* root) {
+vector<vector<int>> levelOrderBFS(TreeNode* root) {
     vector<vector<int>> result;
     if (!root) return result;
 
@@ -33,10 +33,33 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 
         result.push_back(level);
     }
-    
     return result;
 }
 
+// Helper function for DFS Level Order Traversal
+void dfs(TreeNode* node, int level, vector<vector<int>>& result) {
+    if (!node) return;
+
+    // If we reach a new level, create a new vector
+    if (result.size() == level)
+        result.push_back({});
+
+    // Add the current node to its respective level
+    result[level].push_back(node->val);
+
+    // Recursive calls for left and right children
+    dfs(node->left, level + 1, result);
+    dfs(node->right, level + 1, result);
+}
+
+// Level Order Traversal using DFS (Recursion)
+vector<vector<int>> levelOrderDFS(TreeNode* root) {
+    vector<vector<int>> result;
+    dfs(root, 0, result);
+    return result;
+}
+
+// Main function
 int main() {
     // Sample tree:
     //      1
@@ -53,10 +76,20 @@ int main() {
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
 
-    vector<vector<int>> result = levelOrder(root);
+    // BFS Approach
+    vector<vector<int>> resultBFS = levelOrderBFS(root);
+    cout << "Level Order Traversal (BFS):\n";
+    for (const auto& level : resultBFS) {
+        for (int val : level) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
 
-    cout << "Level Order Traversal:\n";
-    for (const auto& level : result) {
+    // DFS Approach
+    vector<vector<int>> resultDFS = levelOrderDFS(root);
+    cout << "Level Order Traversal (DFS):\n";
+    for (const auto& level : resultDFS) {
         for (int val : level) {
             cout << val << " ";
         }

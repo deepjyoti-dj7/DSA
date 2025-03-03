@@ -5,11 +5,11 @@ class TreeNode {
     }
 }
 
-// Level Order Traversal using Queue (BFS)
-function levelOrder(root) {
-    if (!root) return [];
-
+// Level Order Traversal using BFS (Queue)
+function levelOrderBFS(root) {
     let result = [];
+    if (!root) return result;
+
     let queue = [root];
 
     while (queue.length > 0) {
@@ -23,16 +23,40 @@ function levelOrder(root) {
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
         }
-
         result.push(level);
     }
+    return result;
+}
 
+// DFS Helper Function
+function dfs(node, level, result) {
+    if (!node) return;
+
+    if (result.length === level)
+        result.push([]);
+
+    result[level].push(node.val);
+
+    dfs(node.left, level + 1, result);
+    dfs(node.right, level + 1, result);
+}
+
+// Level Order Traversal using DFS (Recursion)
+function levelOrderDFS(root) {
+    let result = [];
+    dfs(root, 0, result);
     return result;
 }
 
 // Main function
 function main() {
-    // Sample tree
+    // Sample Tree:
+    //      1
+    //     / \
+    //    2   3
+    //   / \ / \
+    //  4  5 6  7
+
     let root = new TreeNode(1);
     root.left = new TreeNode(2);
     root.right = new TreeNode(3);
@@ -41,8 +65,8 @@ function main() {
     root.right.left = new TreeNode(6);
     root.right.right = new TreeNode(7);
 
-    let result = levelOrder(root);
-    console.log("Level Order Traversal:", result);
+    console.log("Level Order Traversal (BFS):", levelOrderBFS(root));
+    console.log("Level Order Traversal (DFS):", levelOrderDFS(root));
 }
 
 // Run the main function
