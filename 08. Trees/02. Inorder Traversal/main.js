@@ -6,16 +6,33 @@ class TreeNode {
 }
 
 // Inorder Traversal (Recursive)
-function inorderTraversal(root, result) {
+function inorderTraversalRecursive(root, result) {
     if (!root) return;
-    inorderTraversal(root.left, result);
+    inorderTraversalRecursive(root.left, result);
     result.push(root.val);
-    inorderTraversal(root.right, result);
+    inorderTraversalRecursive(root.right, result);
+}
+
+// Inorder Traversal (Iterative)
+function inorderTraversalIterative(root) {
+    let result = [];
+    let stack = [];
+    let current = root;
+
+    while (current !== null || stack.length > 0) {
+        while (current !== null) {
+            stack.push(current);
+            current = current.left;
+        }
+        current = stack.pop();
+        result.push(current.val);
+        current = current.right;
+    }
+    return result;
 }
 
 // Main function
 function main() {
-    // Sample tree
     let root = new TreeNode(1);
     root.left = new TreeNode(2);
     root.right = new TreeNode(3);
@@ -24,9 +41,12 @@ function main() {
     root.right.left = new TreeNode(6);
     root.right.right = new TreeNode(7);
 
-    let result = [];
-    inorderTraversal(root, result);
-    console.log("Inorder Traversal:", result);
+    let recursiveResult = [];
+    inorderTraversalRecursive(root, recursiveResult);
+    console.log("Recursive Inorder Traversal:", recursiveResult);
+
+    let iterativeResult = inorderTraversalIterative(root);
+    console.log("Iterative Inorder Traversal:", iterativeResult);
 }
 
 // Run the main function

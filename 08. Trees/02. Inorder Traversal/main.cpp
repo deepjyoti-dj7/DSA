@@ -11,11 +11,30 @@ struct TreeNode {
 };
 
 // Inorder Traversal (Recursive)
-void inorderTraversal(TreeNode* root, vector<int>& result) {
+void inorderTraversalRecursive(TreeNode* root, vector<int>& result) {
     if (!root) return;
-    inorderTraversal(root->left, result);
+    inorderTraversalRecursive(root->left, result);
     result.push_back(root->val);
-    inorderTraversal(root->right, result);
+    inorderTraversalRecursive(root->right, result);
+}
+
+// Inorder Traversal (Iterative)
+vector<int> inorderTraversalIterative(TreeNode* root) {
+    vector<int> result;
+    stack<TreeNode*> st;
+    TreeNode* current = root;
+
+    while (current || !st.empty()) {
+        while (current) {  // Reach the leftmost node
+            st.push(current);
+            current = current->left;
+        }
+        current = st.top();
+        st.pop();
+        result.push_back(current->val);
+        current = current->right; // Move to right subtree
+    }
+    return result;
 }
 
 int main() {
@@ -33,11 +52,15 @@ int main() {
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
 
-    vector<int> result;
-    inorderTraversal(root, result);
+    vector<int> recursiveResult;
+    inorderTraversalRecursive(root, recursiveResult);
+    cout << "Recursive Inorder Traversal: ";
+    for (int val : recursiveResult) cout << val << " ";
+    cout << endl;
 
-    cout << "Inorder Traversal: ";
-    for (int val : result) cout << val << " ";
+    vector<int> iterativeResult = inorderTraversalIterative(root);
+    cout << "Iterative Inorder Traversal: ";
+    for (int val : iterativeResult) cout << val << " ";
     cout << endl;
 
     return 0;

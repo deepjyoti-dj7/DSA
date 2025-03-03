@@ -12,11 +12,29 @@ class TreeNode {
 
 public class main {
     // Inorder Traversal (Recursive)
-    public static void inorderTraversal(TreeNode root, List<Integer> result) {
+    public static void inorderTraversalRecursive(TreeNode root, List<Integer> result) {
         if (root == null) return;
-        inorderTraversal(root.left, result);
+        inorderTraversalRecursive(root.left, result);
         result.add(root.val);
-        inorderTraversal(root.right, result);
+        inorderTraversalRecursive(root.right, result);
+    }
+
+    // Inorder Traversal (Iterative)
+    public static List<Integer> inorderTraversalIterative(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            result.add(current.val);
+            current = current.right;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -29,9 +47,11 @@ public class main {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
 
-        List<Integer> result = new ArrayList<>();
-        inorderTraversal(root, result);
+        List<Integer> recursiveResult = new ArrayList<>();
+        inorderTraversalRecursive(root, recursiveResult);
+        System.out.println("Recursive Inorder Traversal: " + recursiveResult);
 
-        System.out.println("Inorder Traversal: " + result);
+        List<Integer> iterativeResult = inorderTraversalIterative(root);
+        System.out.println("Iterative Inorder Traversal: " + iterativeResult);
     }
 }
