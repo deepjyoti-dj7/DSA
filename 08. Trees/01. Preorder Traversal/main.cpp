@@ -11,11 +11,31 @@ struct TreeNode {
 };
 
 // Preorder Traversal (Recursive)
-void preorderTraversal(TreeNode* root, vector<int>& result) {
+void preorderTraversalRecursive(TreeNode* root, vector<int>& result) {
     if (!root) return;
     result.push_back(root->val);
-    preorderTraversal(root->left, result);
-    preorderTraversal(root->right, result);
+    preorderTraversalRecursive(root->left, result);
+    preorderTraversalRecursive(root->right, result);
+}
+
+// Preorder Traversal (Iterative)
+vector<int> preorderTraversalIterative(TreeNode* root) {
+    vector<int> result;
+    if (!root) return result;
+
+    stack<TreeNode*> st;
+    st.push(root);
+
+    while (!st.empty()) {
+        TreeNode* node = st.top();
+        st.pop();
+        result.push_back(node->val);
+
+        // Push right first so that left is processed first
+        if (node->right) st.push(node->right);
+        if (node->left) st.push(node->left);
+    }
+    return result;
 }
 
 int main() {
@@ -33,11 +53,17 @@ int main() {
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
 
-    vector<int> result;
-    preorderTraversal(root, result);
+    // Recursive Preorder Traversal
+    vector<int> recursiveResult;
+    preorderTraversalRecursive(root, recursiveResult);
+    cout << "Recursive Preorder Traversal: ";
+    for (int val : recursiveResult) cout << val << " ";
+    cout << endl;
 
-    cout << "Preorder Traversal: ";
-    for (int val : result) cout << val << " ";
+    // Iterative Preorder Traversal
+    vector<int> iterativeResult = preorderTraversalIterative(root);
+    cout << "Iterative Preorder Traversal: ";
+    for (int val : iterativeResult) cout << val << " ";
     cout << endl;
 
     return 0;
