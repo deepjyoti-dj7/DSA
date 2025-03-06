@@ -1,6 +1,27 @@
 from collections import deque
+import heapq
 
-def maxSlidingWindow(nums, k):
+# Brute Force - O(N*K)
+def brute_force(nums, k):
+    return [max(nums[i:i+k]) for i in range(len(nums) - k + 1)]
+
+# Max Heap (Priority Queue) - O(N log K)
+def heap_sliding_window(nums, k):
+    result = []
+    pq = []
+
+    for i in range(len(nums)):
+        heapq.heappush(pq, (-nums[i], i))
+
+        if i >= k - 1:
+            while pq[0][1] <= i - k:
+                heapq.heappop(pq)
+            result.append(-pq[0][0])
+
+    return result
+
+# Optimized Deque Approach - O(N)
+def deque_sliding_window(nums, k):
     dq = deque()
     result = []
 
@@ -21,7 +42,10 @@ def maxSlidingWindow(nums, k):
 def main():
     nums = [1, 3, -1, -3, 5, 3, 6, 7]
     k = 3
-    print(maxSlidingWindow(nums, k))
+
+    print("Brute Force Output:", brute_force(nums, k))
+    print("Heap Output:", heap_sliding_window(nums, k))
+    print("Deque Output:", deque_sliding_window(nums, k))
 
 if __name__ == "__main__":
     main()
