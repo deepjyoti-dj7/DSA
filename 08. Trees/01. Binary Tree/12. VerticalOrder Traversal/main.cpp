@@ -9,34 +9,32 @@ public:
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
-public:
-    vector<vector<int>> verticalTraversal(TreeNode* root) {
-        map<int, vector<pair<int, int>>> nodes;
-        queue<pair<TreeNode*, pair<int, int>>> q;
-        q.push({root, {0, 0}});
 
-        while (!q.empty()) {
-            auto [node, pos] = q.front();
-            q.pop();
-            int col = pos.first, row = pos.second;
+vector<vector<int>> verticalTraversal(TreeNode* root) {
+    map<int, vector<pair<int, int>>> nodes;
+    queue<pair<TreeNode*, pair<int, int>>> q;
+    q.push({root, {0, 0}});
 
-            nodes[col].push_back({row, node->val});
+    while (!q.empty()) {
+        auto [node, pos] = q.front();
+        q.pop();
+        int col = pos.first, row = pos.second;
 
-            if (node->left) q.push({node->left, {col - 1, row + 1}});
-            if (node->right) q.push({node->right, {col + 1, row + 1}});
-        }
+        nodes[col].push_back({row, node->val});
 
-        vector<vector<int>> result;
-        for (auto& [col, values] : nodes) {
-            sort(values.begin(), values.end());
-            vector<int> colVals;
-            for (auto& [row, val] : values) colVals.push_back(val);
-            result.push_back(colVals);
-        }
-        return result;
+        if (node->left) q.push({node->left, {col - 1, row + 1}});
+        if (node->right) q.push({node->right, {col + 1, row + 1}});
     }
-};
+
+    vector<vector<int>> result;
+    for (auto& [col, values] : nodes) {
+        sort(values.begin(), values.end());
+        vector<int> colVals;
+        for (auto& [row, val] : values) colVals.push_back(val);
+        result.push_back(colVals);
+    }
+    return result;
+}
 
 // Main function
 int main() {
@@ -46,8 +44,7 @@ int main() {
     root->right->left = new TreeNode(15);
     root->right->right = new TreeNode(7);
 
-    Solution sol;
-    vector<vector<int>> result = sol.verticalTraversal(root);
+    vector<vector<int>> result = verticalTraversal(root);
 
     cout << "Vertical Order Traversal:\n";
     for (const auto& col : result) {
