@@ -4,7 +4,7 @@ class TreeNode {
     TreeNode(int x) { val = x; left = right = null; }
 }
 
-public class BSTSearch {
+public class main {
     // Recursive Search
     public static TreeNode searchBST(TreeNode root, int val) {
         if (root == null || root.val == val) return root;
