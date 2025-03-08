@@ -14,10 +14,12 @@ function nextGreaterElementCircular(nums) {
 }
 
 // Main function
-(function main() {
+function main() {
     let nums = [4, 5, 2, 10, 8];
     let result = nextGreaterElementCircular(nums);
 
     console.log("Next Greater Elements (Circular):");
     console.log(result);
-})();
+}
+
+main();
