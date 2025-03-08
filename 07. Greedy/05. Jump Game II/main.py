@@ -16,5 +16,4 @@ def main():
     print("Minimum jumps:", jump([1, 1, 1, 1]))  # Expected Output: 3
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

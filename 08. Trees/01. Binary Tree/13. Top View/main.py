@@ -58,5 +58,4 @@ def main():
     print("Top View (DFS):", topViewDFS(root))
 
     
-if __name__ == "__main__":
-    main()
+main()

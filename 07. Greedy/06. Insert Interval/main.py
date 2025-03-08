@@ -30,5 +30,4 @@ def main():
     print("Updated intervals:", result)
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

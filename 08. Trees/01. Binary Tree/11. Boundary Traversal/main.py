@@ -54,5 +54,4 @@ def main():
     print("Boundary Traversal:", boundary_traversal(root))
 
 
-if __name__ == "__main__":
-    main()
+main()

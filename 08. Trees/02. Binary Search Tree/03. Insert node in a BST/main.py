@@ -53,5 +53,4 @@ def main():
     inorder(root)
     print()
 
-if __name__ == "__main__":
-    main()
+main()

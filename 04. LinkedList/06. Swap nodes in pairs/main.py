@@ -47,5 +47,4 @@ def main():
     printList(head)
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

@@ -47,5 +47,4 @@ def main():
     print("Heap Output:", heap_sliding_window(nums, k))
     print("Deque Output:", deque_sliding_window(nums, k))
 
-if __name__ == "__main__":
-    main()
+main()

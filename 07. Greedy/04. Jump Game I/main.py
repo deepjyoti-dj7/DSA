@@ -16,5 +16,4 @@ def main():
     print(canJump([3, 2, 1, 0, 4]))  # Expected Output: False
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

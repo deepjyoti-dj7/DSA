@@ -93,5 +93,4 @@ def main():
     print("Left View (DFS):", get_left_view_dfs(root))
     print("Right View (DFS):", get_right_view_dfs(root))
 
-if __name__ == "__main__":
-    main()
+main()

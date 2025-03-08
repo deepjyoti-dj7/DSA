@@ -57,5 +57,4 @@ def main():
     print("Bottom View (BFS):", bottom_view_bfs(root))
     print("Bottom View (DFS):", bottom_view_dfs(root))
 
-if __name__ == "__main__":
-    main()
+main()

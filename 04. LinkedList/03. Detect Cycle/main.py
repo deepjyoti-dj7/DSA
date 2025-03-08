@@ -41,5 +41,4 @@ def main():
     print("Cycle detected" if hasCycle(head) else "No cycle")
 
 # Run main function
-if __name__ == "__main__":
-    main()
+main()

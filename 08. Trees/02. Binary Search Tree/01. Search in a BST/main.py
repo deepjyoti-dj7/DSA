@@ -29,5 +29,4 @@ def main():
     result = search_bst_iterative(root, target)
     print(f"Found (Iterative): {result.val}" if result else "Not Found")
 
-if __name__ == "__main__":
-    main()
+main()

@@ -24,5 +24,4 @@ def main():
     nums = [5, -3, 5]
     print("Maximum Circular Subarray Sum:", max_circular_subarray_sum(nums))
 
-if __name__ == "__main__":
-    main()
+main()

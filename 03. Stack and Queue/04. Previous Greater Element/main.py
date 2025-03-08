@@ -11,9 +11,11 @@ def previous_greater_element(nums):
 
     return result
 
-if __name__ == "__main__":
+def main():
     nums = [4, 5, 2, 10, 8]
     result = previous_greater_element(nums)
 
     print("Previous Greater Elements:")
     print(" ".join(map(str, result)))
+
+main()

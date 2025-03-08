@@ -54,5 +54,4 @@ def main():
     print("DFS Approach:", is_symmetric_dfs(root))
     print("BFS Approach:", is_symmetric_bfs(root))
 
-if __name__ == "__main__":
-    main()
+main()

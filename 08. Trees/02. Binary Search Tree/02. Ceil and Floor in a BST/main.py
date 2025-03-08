@@ -71,5 +71,4 @@ def main():
     print("Floor (Recursive):", find_floor_recursive(root, key))
 
 # Run the main function
-if __name__ == "__main__":
-    main()
+main()

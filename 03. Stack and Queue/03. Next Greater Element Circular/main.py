@@ -12,9 +12,11 @@ def next_greater_element_circular(nums):
     return result
 
 # Main function
-if __name__ == "__main__":
+def main():
     nums = [4, 5, 2, 10, 8]
     result = next_greater_element_circular(nums)
 
     print("Next Greater Elements (Circular):")
     print(result)
+
+main()
