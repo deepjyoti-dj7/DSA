@@ -27,5 +27,4 @@ function main() {
     console.log("Combinations:", combinationSum2(candidates, target));
 }
 
-// Run the main function
 main();

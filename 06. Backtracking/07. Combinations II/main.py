@@ -24,6 +24,5 @@ def main():
     target = 8
     print("Combinations:", combinationSum2(candidates, target))
 
-# Run the main function
 if __name__ == "__main__":
     main()
