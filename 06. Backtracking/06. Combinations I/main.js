@@ -26,5 +26,4 @@ function main() {
     console.log(result);
 }
 
-// Run the main function
 main();

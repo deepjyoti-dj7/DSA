@@ -21,5 +21,4 @@ def main():
     print("Combinations:")
     print(result)
 
-# Run the main function
 main()
