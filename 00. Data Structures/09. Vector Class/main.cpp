@@ -38,17 +38,12 @@ public:
         }
     }
 
-    // Get element at index
-    T get(int index) const {
+    // Overload [] operator
+    T operator[](int index) const {
         if (index < current) {
             return arr[index];
         }
         return T(); // Default value for T
-    }
-
-    // Overload [] operator
-    T operator[](int index) const {
-        return get(index);
     }
 
     // Return current size
