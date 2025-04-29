@@ -43,7 +43,7 @@ public:
         if (index < current) {
             return arr[index];
         }
-        return T(); // Default value for T
+        return T();
     }
 
     // Return current size
